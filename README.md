@@ -1,6 +1,6 @@
 # Web-Api-Example
 
-Bu proje, kullanıcıların kayıt olmasını, giriş yapmasını ve profil bilgilerini görüntülemesini sağlayan bir **C# Web API** projesi ile bu API’yi kullanarak kullanıcı dostu arayüzler sunan **ClomosyTrObject** projesinden oluşmaktadır. Projenin amacı, kullanıcı yönetimi işlemlerini güvenli bir şekilde gerçekleştiren, modern ve ölçeklenebilir bir çözüm sunmaktır.
+Bu proje, kullanıcıların kayıt olmasını, giriş yapmasını ve profil bilgilerini görüntülemesini sağlayan bir **C# Web API** projesi ile bu API’yi kullanarak kullanıcı dostu arayüzler sunan **Clomosy TrObject** projesinden oluşmaktadır. Projenin amacı, kullanıcı yönetimi işlemlerini güvenli bir şekilde gerçekleştiren, modern ve ölçeklenebilir bir çözüm sunmaktır.
 
 ## Proje Açıklaması
 
@@ -21,9 +21,9 @@ Bu proje, kullanıcıların kayıt olmasını, giriş yapmasını ve profil bilg
 - **Microsoft SQL Server**: Kullanıcı veritabanının saklandığı sunucu.
 - **JWT (JSON Web Token)**: Kimlik doğrulama mekanizması olarak kullanılır.
 
-### 2. ClomosyTrObject Projesi
+### 2. Clomosy TrObject Projesi
 
-**ClomosyTrObject** projesi, C# Web API ile etkileşime giren ve kullanıcı arayüzü sağlayan bir projedir. Bu proje, Web API’ye gönderilen istekleri gerçekleştirerek kullanıcının oturum açmasını, kayıt olmasını ve profil bilgilerini görüntülemesini sağlayan sayfalar içerir. Proje, API ile tam entegre çalışır ve modern bir kullanıcı deneyimi sunar.
+**Clomosy TrObject** projesi, C# Web API ile etkileşime giren ve kullanıcı arayüzü sağlayan bir projedir. Bu proje, Web API’ye gönderilen istekleri gerçekleştirerek kullanıcının oturum açmasını, kayıt olmasını ve profil bilgilerini görüntülemesini sağlayan sayfalar içerir. Proje, API ile tam entegre çalışır ve modern bir kullanıcı deneyimi sunar.
 
 #### Sayfalar
 
