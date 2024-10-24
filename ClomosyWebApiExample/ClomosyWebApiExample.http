@@ -1,0 +1,6 @@
+@ClomosyWebApiExample_HostAddress = http://localhost:5123
+
+GET {{ClomosyWebApiExample_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
