@@ -1,0 +1,45 @@
+uses CustomLabel,Main;
+var
+  MyForm: TCLForm;
+  HeaderLabel: TCLLabel;
+
+void GetProfileService;
+var 
+  clRest: TCLRest;
+  JSONObject: TCLJSONQuery;
+{
+  clRest = TCLRest.Create;
+  JSONObject = TCLJSONQuery.Create(nil);  
+  // Post
+  clRest.BaseURL = 'https://localhost:7002/api/Auth/profile';
+  clRest.Accept = 'application/json';
+  clRest.Method = rmGET;
+  clRest.AddHeader('Authorization','Bearer '+Main.JWTToken+'');
+
+  clRest.Execute;
+  
+  JSONObject = Clomosy.ClDataSetFromJSON(clRest.Response)
+  if (JSONObject.FieldByName('status').AsString == 'Error')
+    ShowMessage(JSONObject.FieldByName('message').AsString);
+  else {
+    JSONObject = Clomosy.ClDataSetFromJSON(JSONObject.FieldByName('profile').AsString)
+     CustomLabelFunc(MyForm,MyForm,JSONObject.FieldByName('username').AsString,'UsernameLbl');
+     CustomLabelFunc(MyForm,MyForm,JSONObject.FieldByName('email').AsString,'MailLbl');
+     CustomLabelFunc(MyForm,MyForm,JSONObject.FieldByName('firstName').AsString,'FirstNameLbl');
+     CustomLabelFunc(MyForm,MyForm,JSONObject.FieldByName('lastName').AsString,'LastNameLbl');
+  }
+}
+
+ 
+{
+  MyForm = TCLForm.Create(Self);
+  
+  HeaderLabel = CustomLabelFunc(MyForm,MyForm,'Profil Bilgileri Görüntüleniyor','ProfilHeader')
+  HeaderLabel.StyledSettings = ssFamily;
+  HeaderLabel.TextSettings.Font.Size=16;
+  HeaderLabel.TextSettings.Font.Style = [fsBold]; //[fsItalic,fsUnderline]	
+  
+  GetProfileService;
+  
+  MyForm.Run;
+}

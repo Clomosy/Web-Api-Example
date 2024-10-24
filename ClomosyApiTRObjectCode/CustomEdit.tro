@@ -1,0 +1,16 @@
+function CustomEditFunc(AMyForm,ALayout,ACaption,AEdtName): TCLEdit;
+var 
+  CustomEdt: TCLEdit;
+{
+  CustomEdt =  AMyForm.AddNewEdit(ALayout,AEdtName,ACaption);
+  CustomEdt.StyledSettings = ssFamily;
+  CustomEdt.Align = alMostTop;
+  CustomEdt.height = 38;
+  CustomEdt.Margins.Top = 12;
+  CustomEdt.Margins.Left = 26;
+  CustomEdt.Margins.Right = 26;
+  CustomEdt.TextSettings.Font.Size = 14;
+  CustomEdt.clTypeOfField = taString;
+  
+  Result = CustomEdt;
+}

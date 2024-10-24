@@ -1,0 +1,14 @@
+function CustomLabelFunc(AMyForm,ALayout,ACaption,ALblName): TCLLabel;
+var 
+  CustomLbl: TCLLabel;
+{
+  CustomLbl =  AMyForm.AddNewLabel(ALayout,ALblName,ACaption);
+  CustomLbl.StyledSettings = ssFamily;
+  CustomLbl.Align = alTop;
+  CustomLbl.height = 38;
+  CustomLbl.Margins.Top = 6;
+  CustomLbl.Margins.Left = 26;
+  CustomLbl.TextSettings.Font.Size = 14;
+  
+  Result = CustomLbl;
+}

@@ -1,0 +1,55 @@
+uses CustomEdit,CustomButton,CustomLabel;
+var
+ MyForm: TCLForm;
+ UsernameEdt: TclEdit;
+ PasswordEdt: TclEdit;
+ LoginBtn,RegisterBtn: TCLButton;
+ LoginLyt: TclLayout;
+ JWTToken: String;
+ 
+void LoginService;
+var 
+  clRest: TCLRest;
+  JSONObject: TCLJSONQuery;
+{
+  clRest = TCLRest.Create;
+  JSONObject = TCLJSONQuery.Create(nil);  
+  // Post
+  clRest.BaseURL = 'https://localhost:7002/api/Auth/login';
+  clRest.Accept = 'application/json';
+  clRest.Method = rmPOST;
+  clRest.AddBody('{"username":"'+UsernameEdt.Text+'","password":"'+PasswordEdt.Text+'"}','application/json');
+  clRest.Execute;
+  
+  JSONObject = Clomosy.ClDataSetFromJSON(clRest.Response)
+  if (JSONObject.FieldByName('status').AsString == 'Error')
+    ShowMessage(JSONObject.FieldByName('message').AsString);
+  else {
+    JWTToken = JSONObject.FieldByName('token').AsString;
+    Clomosy.RunUnit('uProfile');
+  }
+}
+
+void RegisterNav;
+{
+  Clomosy.RunUnit('uRegister');
+}
+
+{
+  MyForm = TCLForm.Create(Self);
+  
+  UsernameEdt = CustomEditFunc(MyForm,MyForm,'Kullanıcı Adını Giriniz','UsernameEdt')
+  PasswordEdt = CustomEditFunc(MyForm,MyForm,'Parolonızı Giriniz','PasswordEdt')
+  PasswordEdt.Password = True;	
+  
+  LoginBtn = CustomButtonFunc(MyForm,MyForm,'Giriş Yap','LoginBtn')
+  LoginBtn.Onclick = 'LoginService';
+  
+  CustomLabelFunc(MyForm,MyForm,'Hesabın Yoksa Kayıt Olabilirsin','KayıtOlLabel')
+  
+  RegisterBtn = CustomButtonFunc(MyForm,MyForm,'Kayıt Ol','RegisterBtn')
+  RegisterBtn.Onclick = 'RegisterNav';
+  
+  
+  MyForm.Run;
+}

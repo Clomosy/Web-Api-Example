@@ -1,0 +1,17 @@
+function CustomButtonFunc(AMyForm,Layout,ACaption,ABtnName):TCLButton;
+var 
+  CustomBtn: TCLButton;    
+{
+  CustomBtn = AMyForm.AddNewButton(Layout,ABtnName,ACaption);
+  
+  CustomBtn.Align = alTop;
+  CustomBtn.Margins.Top= 12;
+  CustomBtn.Margins.Left = 26;
+  CustomBtn.Margins.Right = 26;
+  CustomBtn.height = 38;
+  CustomBtn.StyledSettings = ssFamily;
+  CustomBtn.TextSettings.Font.Size = 14;
+  CustomBtn.TextSettings.FontColor = clAlphaColor.clHexToColor('#3700ff');
+  
+  Result = CustomBtn;
+}
